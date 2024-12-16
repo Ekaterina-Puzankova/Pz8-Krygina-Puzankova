@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика бота</title>
+</head>
+<body>
+    <h1>Статистика Бредогенератора</h1>
+
+    <h2>Ежедневная статистика</h2>
+    <p>Количество сообщений сегодня: {{ daily_stats }}</p>
+     <p>Количество сообщений вчера: {{ yesterday_stats }}</p>
+
+    <h2>Статистика по пользователям</h2>
+    <ul>
+        {% for user in user_stats %}
+           {% if user.username %}
+                <li>{{ user.username }}: {{ user.message_count }} сообщений</li>
+           {% else %}
+                <li>Неизвестный пользователь: {{user.message_count}} сообщений</li>
+           {% endif %}
+        {% endfor %}
+    </ul>
+     <h2>Статистика по командам</h2>
+    <ul>
+        {% for command in command_stats %}
+           {% if command.command %}
+                <li>{{ command.command }}: {{ command.command_count }} сообщений</li>
+           {% else %}
+                <li>Нет команды: {{command.command_count}} сообщений</li>
+           {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
